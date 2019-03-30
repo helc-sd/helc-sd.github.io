@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('repairupdate')}" method="post">
+            <label>分公司:</label><br>
+            <input type="hidden" name="id" value="{$Maintain->getData('id')}" />
+            <input type="text" name="company" value="{$Maintain->getData('company')}" /><br>
+            <label>销售指标:</label><br>
+            <input type="text" name="repair_sale_index" value="{$Maintain->getData('repair_sale_index')}" /><br>
+            <label>销售实际:</label><br>
+            <input type="text" name="repair_sale" value="{$Maintain->getData('repair_sale')}" /><br>
+            <label>入金指标:</label><br>
+            <input type="text" name="repair_income_index" value="{$Maintain->getData('repair_income_index')}" /><br>
+            <label>入金实际:</label><br>
+            <input type="text" name="repair_income" value="{$Maintain->getData('repair_income')}" /><br>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

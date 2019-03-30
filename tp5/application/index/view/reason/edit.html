@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('update')}" method="post">
+            <label>分公司:</label><br>
+            <input type="hidden" name="id" value="{$Reason->getData('id')}" />
+            <input type="text" name="company" value="{$Reason->getData('company')}" /><br>
+            <label>不可收:</label><br>
+            <input type="text" name="notcollect" value="{$Reason->getData('notcollect')}" /><br>
+            <label>性能不良待处理:</label><br>
+            <input type="text" name="pending" value="{$Reason->getData('pending')}" /><br>
+            <label>已提交诉讼:</label><br>
+            <input type="text" name="sublawsuit" value="{$Reason->getData('sublawsuit')}" /><br>
+            <label>按合同支付条件未到期:</label><br>
+            <input type="text" name="notexpired" value="{$Reason->getData('notexpired')}" /><br>
+            <label>正在走付款流程:</label><br>
+            <input type="text" name="inprocess" value="{$Reason->getData('inprocess')}" /><br>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

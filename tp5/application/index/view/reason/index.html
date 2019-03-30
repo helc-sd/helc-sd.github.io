@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>维保数据</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="company">分公司</label>
+                        <input name="company" type="text" class="form-control" placeholder="分公司..."value="{:input('get.company')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+                <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>分公司</th>
+                    <th>不可收</th>
+                    <th>性能不良待处理</th>
+                    <th>已提交诉讼</th>
+                    <th>按合同支付条件未到期</th>
+                    <th>正在走付款流程</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="reasons" id="_Reason" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$_Reason->getData('company')}</td>
+                    <td>{$_Reason->getData('notcollect')}</td>
+                    <td>{$_Reason->getData('pending')}</td>
+                    <td>{$_Reason->getData('sublawsuit')}</td>
+                    <td>{$_Reason->getData('notexpired')}</td>
+                    <td>{$_Reason->getData('inprocess')}</td>
+                    <td><a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $_Reason->getData('id'))}"><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>&nbsp;<a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $_Reason->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a></td>
+                </tr>
+                {/volist}
+            </table>
+            {$reasons->render()}
+        </div>
+    </div>
+</div>
+</body>
+</html>

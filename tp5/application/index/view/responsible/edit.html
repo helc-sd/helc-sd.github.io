@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#">设置</a></li>
+            <li class="active">营业/监理/收款专员维护</li>
+            <li class="active">更新</li>
+        </ol>
+        <form class="form-inline" action="{:url('update')}" method="post">
+            <div class="input-group">
+                <input type="hidden" name="id" value="{$Responsible->getData('id')}" />
+                <span class="input-group-addon" id="basic-addon1">员工编号</span>
+                <input type="text" class="form-control" name="emid" placeholder="" aria-describedby="basic-addon1" value="{$Responsible->getData('emid')}">
+            </div><br><br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2">员工姓名</span>
+                <input type="text" class="form-control" name="name" placeholder="" aria-describedby="basic-addon1" value="{$Responsible->getData('name')}">
+            </div><br><br>
+            <div class="form-group">
+                <select class="form-control selectpicker" name="company">
+                    <option value="{$Responsible->getData('company')}">{$Responsible->getData('company')}</option>
+                    <option value="济南大区">济南大区</option>
+                    <option value="青岛分公司">青岛分公司</option>
+                    <option value="潍坊分公司">潍坊分公司</option>
+                    <option value="烟台分公司">烟台分公司</option>
+                    <option value="临沂分公司">临沂分公司</option>
+                    <option value="济宁分公司">济宁分公司</option>
+                    <option value="德州分公司">德州分公司</option>
+                    <option value="东营分公司">东营分公司</option>
+                    <option value="菏泽办事处">菏泽办事处</option>
+                </select>
+            </div><br><br>
+            <div class="form-group">
+                <select class="form-control selectpicker" name="position"  >
+                    <option value="{$Responsible->getData('position')}">{$Responsible->getData('position')}</option>
+                    <option value="营业员">营业员</option>
+                    <option value="项目经理">项目经理</option>
+                    <option value="收款专员">收款专员</option>
+                    <option value="维保业务经理">维保业务经理</option>
+                </select>
+            </div><br><br>
+            <div class="form-group">
+                <select class="form-control selectpicker" name="status">
+                    <option value="{$Responsible->getData('status')}">{$Responsible->getData('status')}</option>
+                    <option value="在职">在职</option>
+                    <option value="离职">离职</option>
+                    <option value="转岗">转岗</option>
+                </select>
+            </div><br><br>
+            <button type="submit">更新</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

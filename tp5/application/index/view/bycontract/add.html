@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline" action="{:url('insert')}" method="post">
+            <label>合同号:</label><br>
+            <input type="text" name="contract_id" required="required" /><br>
+            <label>分公司:</label><br>
+            <input type="text" name="company" required="required" /><br>
+            <label>业务经理:</label><br>
+            <input type="text" name="business_manager" required="required" /><br>
+            <label>甲方:</label><br>
+            <input type="text" name="party_a" required="required" /><br>
+            <label>乙方:</label><br>
+            <input type="text" name="party_b" required="required"  /><br>
+            <label>合同类型:</label><br>
+            <select name="contract_type">
+                <option>保养</option>
+                <option>维改</option>
+            </select><br>
+            <label>项目名称:</label><br>
+            <input type="text" name="project_name" required="required"  /><br>
+            <label>合同金额:</label><br>
+            <input type="text" name="contract_amount" required="required"  /><br>
+            <label>售后服务部提交时间:</label><br>
+            <input type="date" name="submission_date"  /><br>
+            <hr />
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

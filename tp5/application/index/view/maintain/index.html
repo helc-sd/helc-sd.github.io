@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>维保数据</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="company">姓名</label>
+                        <input name="company" type="text" class="form-control" placeholder="分公司..."value="{:input('get.company')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+                <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>分公司</th>
+                    <th>台量合计</th>
+                    <th>三包在保</th>
+                    <th>有偿在保</th>
+                    <th>有偿指标</th>
+                    <th>完成率</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="maintains" id="_Maintain" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$_Maintain->getData('company')}</td>
+                    <td>{$_Maintain->getData('total')}</td>
+                    <td>{$_Maintain->getData('guarantee')}</td>
+                    <td>{$_Maintain->getData('paid')}</td>
+                    <td>{$_Maintain->getData('paid_index')}</td>
+                    <td>{$_Maintain->getData('paid_per')}</td>
+                    <td><a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $_Maintain->getData('id'))}"><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>&nbsp;<a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $_Maintain->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a></td>
+                </tr>
+                {/volist}
+            </table>
+            {$maintains->render()}
+        </div>
+    </div>
+</div>
+</body>
+</html>

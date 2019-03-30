@@ -1,0 +1,29 @@
+
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="https://cdn.bootcss.com/bootstrap-submenu/1.2.13/js/bootstrap-submenu.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-submenu/1.2.13/js/bootstrap-submenu.min.js"></script>
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/i18n/defaults-*.min.js"></script>
+
+<script>
+    function del()
+    {
+        if(confirm("确定要删除吗？"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+</script>
+<script>
+    $(function submenu() {
+        $('.dropdown-submenu > a').submenupicker();
+    });
+</script>
+</body>
+</html>

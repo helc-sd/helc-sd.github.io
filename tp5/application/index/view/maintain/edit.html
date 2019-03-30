@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('update')}" method="post">
+            <label>分公司:</label><br>
+            <input type="hidden" name="id" value="{$Maintain->getData('id')}" />
+            <input type="text" name="company" value="{$Maintain->getData('company')}" /><br>
+            <label>三包在保:</label><br>
+            <input type="text" name="guarantee" value="{$Maintain->getData('guarantee')}" /><br>
+            <label>有偿在保:</label><br>
+            <input type="text" name="paid" value="{$Maintain->getData('paid')}" /><br>
+            <label>有偿指标:</label><br>
+            <input type="text" name="paid_index" value="{$Maintain->getData('paid_index')}" />
+            <hr \>
+            <button type="submit"><i class="glyphicon glyphicon-floppy-saved"></i>保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

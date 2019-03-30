@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事业部成员列表</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">事业部报表</a></li>
+                <li class="active">当年欠款率指标及完成情况</li>
+            </ol>
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-striped table-condensed">
+                    <tr class="info">
+                        <th>序号</th>
+                        <th>事业部名称</th>
+                        <th>分公司</th>
+                        <th class="text-right">合同金额</th>
+                        <th class="text-right">当年欠款</th>
+                        <th class="text-right">欠款率%</th>
+                        <th class="text-right">得分</th>
+                    </tr>
+                    {volist name="buthisyears" id="_Buthisyear" key="key"}
+                    <tr>
+                        <td>{$key}</td>
+                        <td>{$_Buthisyear->getData('bu_name')}</td>
+                        <td>{$_Buthisyear->getData('company')}</td>
+                        <td class="text-right">{$_Buthisyear->getData('contract_amount')|round=2}</td>
+                        <td class="text-right">{$_Buthisyear->getData('this_arrears')|round=2}</td>
+                        <td class="text-right">{$_Buthisyear->getData('rate')|round=6}</td>
+                        <td class="text-right">{$_Buthisyear->getData('score')}</td>
+                    </tr>
+                    {/volist}
+                </table>
+            </div>
+            {$buthisyears->render()}
+        </div>
+    </div>
+</body>
+</html>

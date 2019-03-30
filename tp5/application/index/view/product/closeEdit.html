@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('closeUpdate')}" method="post">
+            <label>生产工号:</label><br>
+            <input type="hidden" name="id"  value="{$Product->getData('id')}" />
+            <input type="text" name="product_id" disabled="disabled" value="{$Product->getData('product_id')}" /><br>
+            <label>合同号:</label><br>
+            <input type="text" name="contract_id" disabled="disabled" value="{$Product->getData('contract_id')}" /><br>
+            <label>关闭日期:</label><br>
+            <input type="date" name="close_date" value="{$Product->getData('close_date')}" />
+            <hr />
+            <button type="submit" class="btn btn-danger">关闭</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

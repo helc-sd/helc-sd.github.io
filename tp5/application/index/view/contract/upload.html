@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<volist name='files' id='file'>
+                 <img src="__PUBLIC__/Uploads/{$file.file_path}"/>
+             </volist>
+         <form action="__URL__/upload" method="post" enctype="multipart/form-data">
+                 用户名:<input type="text" name="username"/><br/>
+                 选择文件:<input type="file" name="file[]"/><br/>
+                          <input type="file" name="file[]"/><br/>
+                 <input type="submit" value="上传"/>
+             </form>
+</body>
+</html>

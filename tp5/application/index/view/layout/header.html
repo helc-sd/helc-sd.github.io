@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HITACHI.SD</title>
+    <link href="https://cdn.bootcss.com/bootstrap-submenu/1.2.13/css/bootstrap-submenu.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap-submenu/1.2.13/css/bootstrap-submenu.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body class="container">
+<!-- 菜单导航 -->
+<div class="row">
+    <div class="col-md-12">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- 移动设备菜单 -->
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                        <span class="sr-only">切换导航</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <!-- 移动设备菜单 -->
+                    <!-- 主页 -->
+                    <div class="navbar-header">
+                        <a href="{:url('Index/welcome')}" class="navbar-brand nav-title" style="color: #E60027">
+                            <span class="glyphicon glyphicon-home" ></span>
+                            <strong>HITACHI</strong>
+                        </a>
+                    </div>
+                    <!-- /主页 -->
+                </div>
+                <!-- 权限菜单 -->
+                <div class="collapse navbar-collapse" id="navbar-menu">
+                    <ul class="nav navbar-nav ">
+                        <!-- 山东司 -->
+                        {eq name="Think.session.sdreport" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-tasks
+" aria-hidden="true"></span>山东司<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="{:url('Sdquarterindex/index')}">山东司季度指标及完成情况</a></li>
+                                <li><a href="{:url('Sdcompanyindex/index')}">区域生效/待生效/待签情况</a></li>
+                                <li><a href="{:url('Sdcompanyindex/install')}">区域完工/关闭/在制情况</a></li>
+                                <li><a href="{:url('Sdcompanyindex/arrears')}">区域历史欠款及回收情况</a></li>
+                                <li class="divider"></li>
+
+                                <li><a href="{:url('Bufinance/report')}">事业部项目奖金/费用</a></li>
+                                <li><a href="{:url('Bufinance/year')}">事业部年终奖励</a></li>
+                                <li><a href="{:url('Profit/report')}">盈利分享</a></li>
+                                <li class="divider"></li>
+                                <li class="dropdown-submenu">
+                                    <a tabindex="0" data-toggle="dropdown">营业员</a>
+                                    <ul class="dropdown-menu">
+                                        <!--<li class="dropdown-header">区域</li>-->
+                                        <li><a tabindex="0" href="{:url('Sdquarterindex/index')}">济南大区</a></li>
+                                        <li><a tabindex="0">青岛分公司</a></li>
+                                        <li><a tabindex="0">潍坊分公司</a></li>
+                                        <li><a tabindex="0">烟台分公司</a></li>
+                                        <li><a tabindex="0">临沂分公司</a></li>
+                                        <li><a tabindex="0">济宁分公司</a></li>
+                                        <li><a tabindex="0">德州分公司</a></li>
+                                        <li><a tabindex="0">东营分公司</a></li>
+                                        <li><a tabindex="0">菏泽办事处</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /山东司 -->
+                        <!-- 区域 -->
+                        {eq name="Think.session.coreport" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-blackboard
+" aria-hidden="true"></span>区域<span class="caret"></span>
+                            </a>
+                                <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                                <li><a href="{:url('Sdcompanyindex/index')}">区域生效/待生效/待签汇总</a></li>
+                                <li><a href="{:url('Product/companyintoforce')}">区域生效明细</a></li>
+                                <li><a href="{:url('Product/preintoforce')}">区域待生效明细</a></li>
+                                <li><a href="{:url('Product/presign')}">区域待签订明细</a></li>
+                                <li><a href="{:url('Sdcompanyindex/coimportant')}">区域重点跟踪项目明细</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Sdcompanyindex/install')}">区域完工/关闭/在制情况</a></li>
+                                <li><a href="{:url('Sdcompanyindex/companycomplete')}">区域完工明细</a></li>
+                                <li><a href="{:url('Buarrears/index')}">历史欠款明细</a></li>
+                                <li><a href="{:url('Contract/upload')}">合同资料上传</a></li>
+                            </ul>
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /区域 -->
+                        <!-- 事业部 -->
+                        {eq name="Think.session.bureport" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-object-align-bottom
+" aria-hidden="true"></span>事业部<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Buscore/report')}">事业部PPM完成情况</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Bufdetail/report')}">事业部入金按月汇总</a></li>
+                                <li><a href="{:url('Bufinance/report')}">事业部项目奖金/费用</a></li>
+                                <li><a href="{:url('Bufinance/year')}">事业部年终奖励</a></li>
+                                <li><a href="{:url('Profit/report')}">盈利分享</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Bufinance/buintoforce')}">事业部生效明细</a></li>
+                                <li><a href="{:url('Bufinance/bucomplete')}">事业部完工明细</a></li>
+                                <li><a href="{:url('Bufinance/buincome')}">事业部入金明细</a></li>
+                                <li><a href="{:url('Bufinance/bucost')}">事业部报销明细</a></li>
+                                <li><a href="{:url('Arrears/bureport')}">事业部欠款明细</a></li>
+                            </ul>
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /事业部 -->
+                        <!-- 合同管理部 -->
+                        {eq name="Think.session.htglb" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-book" aria-hidden="true"></span>合同<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Product/close')}">工号关闭信息录入</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Income/index')}">入金统计</a></li>
+                                <li><a href="{:url('Income/coincome')}">入金按月汇总</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Arrears/index')}">欠款统计</a></li>
+                                <li><a href="{:url('Reason/index')}">欠款原因</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Litigation/index')}">诉讼律师函</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Bycontract/audit')}">售后非标合同审核</a></li>
+                            </ul>
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /合同管理部 -->
+                        <!-- 财务管理部 -->
+                        {eq name="Think.session.cwglb" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+
+                                <span class="glyphicon glyphicon-yen" aria-hidden="true"></span>财务<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Bucost/index')}">费用报销</a></li>
+                                <li><a href="{:url('Income/coincome')}">入金按月汇总</a></li>
+                            </ul>
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /财务管理部 -->
+                        <!-- 安装管理部 -->
+                        {eq name="Think.session.azglb" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-compressed" aria-hidden="true"></span>安装<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Product/complete')}">工号完工信息录入</a></li>
+                                <li><a href="{:url('Badcost/index')}">不良费用信息录入</a></li>
+                            </ul>
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /安装管理部 -->
+                        <!-- 售后服务部 -->
+                        {eq name="Think.session.shfwb" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>售后<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Bycontract/index')}">售后非标合同录入</a></li>
+                                <li><a href="{:url('Maintain/index')}">台量录入</a></li>
+                                <li><a href="{:url('Maintain/maintain')}">保养销售&入金</a></li>
+                                <li><a href="{:url('Maintain/repair')}">维改销售&入金</a></li>
+                                <li><a href="{:url('Maintain/profit')}">保养成本&毛利率</a></li>
+                            </ul>
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /售后服务部 -->
+                        <!-- 人力资源部 -->
+                        {eq name="Think.session.rlzyb" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>人资<span class="caret"></span>
+                            </a>
+                            {eq name="Think.session.admin" value="1"}
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Sdquarterindex/index')}">山东司季度指标及完成情况</a></li>
+                                <li><a href="{:url('Bustaff/index')}">事业部成员维护</a></li>
+                                <li><a href="{:url('Budrawing/index')}">事业部薪酬计提</a></li>
+                            </ul>
+                            {else/}
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Sdquarterindex/index')}">山东司季度指标及完成情况</a></li>
+                            </ul>
+                            {/eq}
+
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /人力资源部 -->
+                        <!-- 设置 -->
+                        {eq name="Think.session.yyglb" value="1"}
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>设置<span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Staff/index')}">用户管理</a></li>
+                                <li><a href="{:url('Responsible/index')}">营业/监理/收款专员维护</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Bustaff/index')}">事业部成员维护</a></li>
+                                <li><a href="{:url('Bucross/index')}">跨区域项目维护</a></li>
+                                <li><a href="{:url('Bufdetail/index')}">事业部入金调整</a></li>
+                                <li class="divider"></li>
+                                <li><a href="{:url('Bufinance/index')}">事业部薪酬费用池</a></li>
+                                <li><a href="{:url('Profit/index')}">盈利分享</a></li>
+                            </ul>
+                        </li>
+                        {else/}
+                        {/eq}
+                        <!-- /设置 -->
+                        <!-- 个人中心 -->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>{$Think.session.staff_name} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{:url('Login/logout')}">注销</a></li>
+                                <li><a href="{:url('Staff/changepw')}">修改密码</a></li>
+                            </ul>
+                        </li>
+                        <!-- /个人中心 -->
+                    </ul>
+                </div>
+                <!-- /权限菜单 -->
+            </div>
+        </nav>
+    </div>
+</div>
+<!-- /菜单导航 -->
+<p class="bg-info"> <marquee scrollamount="3"><font  color=red>{$Think.session.today_date}&nbsp&nbsp&nbsp{$Think.session.today_week}</font></marquee></p>
+<!--
+<div class="alert alert-success" role="alert">今天是:{$Think.session.today_date}{$Think.session.today_week}</div>-->

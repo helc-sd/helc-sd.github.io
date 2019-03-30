@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区域完工明细</title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <ol class="breadcrumb">
+            <li><a href="#">区域报表</a></li>
+            <li class="active">区域完工明细</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="company">分公司</label>
+                        <select name="company" class="form-control" value="{:input('select.company')}">
+                            <option>{$Think.session.company}</option>
+                            <option>济南大区</option>
+                            <option>青岛分公司</option>
+                            <option>潍坊分公司</option>
+                            <option>烟台分公司</option>
+                            <option>临沂分公司</option>
+                            <option>济宁分公司</option>
+                            <option>东营分公司</option>
+                            <option>德州分公司</option>
+                            <option>菏泽办事处</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+            </div>
+        </div>
+
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>年月</th>
+                    <th>项目经理</th>
+                    <th>项目名称</th>
+                    <th>完工台量</th>
+                </tr>
+                {volist name="result" id="vo"}
+                <tr>
+                    <td>{$vo.year}</td>
+                    <td>{$vo.supervisor}</td>
+                    <td>{$vo.project_name}</td>
+                    <td>{$vo.sum}</td>
+                    {/volist}
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

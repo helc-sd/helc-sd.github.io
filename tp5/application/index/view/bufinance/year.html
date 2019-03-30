@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事业部成员列表</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#">事业部报表</a></li>
+            <li class="active">事业部年终奖励</li>
+        </ol>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>事业部</th>
+                    <th>区域</th>
+                    <th class="text-right">薪酬池</th>
+                    <th class="text-right">费用池</th>
+                    <th class="text-right">薪酬计提</th>
+                    <th class="text-right">费用支出</th>
+                    <th class="text-right">薪酬结余</th>
+                    <th class="text-right">费用结余</th>
+                    <th class="text-right">财年</th>
+                </tr>
+                {volist name="bufinances" id="_Bufinance" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$_Bufinance->getData('bu_name')}</td>
+                    <td>{$_Bufinance->getData('scompany')}</td>
+                    <td class="text-right">{$_Bufinance->getData('year_pay')}</td>
+                    <td class="text-right">{$_Bufinance->getData('year_cost')}</td>
+                    <td class="text-right">{$_Bufinance->getData('year_sum_drawing')}</td>
+                    <td class="text-right">{$_Bufinance->getData('year_sum_cost')}</td>
+                    <td class="text-right">{$_Bufinance->getData('year_pay_balance')}</td>
+                    <td class="text-right">{$_Bufinance->getData('year_cost_balance')}</td>
+                    <td>{$_Bufinance->getData('year')}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        {$bufinances->render()}
+    </div>
+</div>
+</body>
+</html>

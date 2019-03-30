@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>入金明细</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#"><span class = "glyphicon glyphicon-option-vertical"></span>合同管理部</a></li>
+            <li class="active">欠款统计</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="product_id">生产工号</label>
+                        <input name="product_id" type="text" class="search-query" placeholder="生产工号..."value="{:input('get.product_id')}">
+                        <label class="sr-only" id="contract_id">合同号</label>
+                        <input name="contract_id" type="text" class="form-control" placeholder="合同号..."value="{:input('get.contract_id')}">
+                        <label class="sr-only" id="bu_name">事业部</label>
+                        <input name="bu_name" type="text" class="form-control" placeholder="事业部..."value="{:input('get.bu_name')}">
+                        <label class="sr-only" id="expire_date_from">到期应收日期从</label>
+                        <input name="expire_date_from" type="text" required="required" class="form-control" placeholder="到期应收日期从..."value="{:input('get.expire_date_from')}">
+                        <label class="sr-only" id="expire_date_to">到期应收日期至</label>
+                        <input name="expire_date_to" type="text" required="required" class="form-control" placeholder="到期应收日期至..."value="{:input('get.expire_date_to')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+
+            <hr />
+            <div class="row">
+                <div class="col-md-12 text-left">
+                    <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+                    <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+                </div>
+            </div>
+            <hr />
+            </div>
+<!--            <div class="col-md-12 text-right">
+                <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+                <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>-->
+        </div>
+        <hr />
+        <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="info">
+                <th>序号</th>
+                <th>生产工号</th>
+                <th>合同号</th>
+                <th>买方单位</th>
+                <th>到期应收日期</th>
+                <th>欠款金额</th>
+                <th>欠款人</th>
+                <th>事业部名称</th>
+                <th>欠款类型</th>
+                <th>操作</th>
+            </tr>
+            {volist name="arrearss" id="_Arrears" key="key"}
+            <tr>
+                <td>{$key}</td>
+                <td>{$_Arrears->getData('product_id')}</td>
+                <td>{$_Arrears->getData('contract_id')}</td>
+                <td>{$_Arrears->getData('buyer')}</td>
+                <td>{$_Arrears->getData('expire_date')}</td>
+                <td>{$_Arrears->getData('arrears_amount')}</td>
+                <td>{$_Arrears->getData('arrears_staff')}</td>
+                <td>{$_Arrears->getData('bu_name')}</td>
+                <td>{$_Arrears->getData('arrears_type')}</td>
+                <td><a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $_Arrears->getData('id'))}" onclick='return del();'><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>&nbsp;<a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $_Arrears->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a></td>
+            </tr>
+            {/volist}
+        </table>
+        {$arrearss->render()}
+        </div>
+    </div>
+</div>
+</body>
+</html>

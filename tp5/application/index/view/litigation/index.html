@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事业部成员列表</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="staff_name">姓名</label>
+                        <input name="contract_id" type="text" class="form-control" placeholder="合同号..."value="{:input('get.contract_id')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+                <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>ID</th>
+                    <th>合同号</th>
+                    <th>分公司</th>
+                    <th>买方单位</th>
+                    <th>发函日期</th>
+                    <th>买卖合同起诉金额</th>
+                    <th>安装合同起诉金额</th>
+                    <th>维保合同起诉金额</th>
+                    <th>投标保证金</th>
+                    <th>类型</th>
+                    <th>是否结案</th>
+                    <th>进展情况</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="litigations" id="_Litigation" key="key"}
+                <tr>
+                    <td>{$_Litigation->getData('id')}</td>
+                    <td>{$_Litigation->getData('contract_id')}</td>
+                    <td>{$_Litigation->getData('company')}</td>
+                    <td>{$_Litigation->getData('buyer')}</td>
+                    <td>{$_Litigation->getData('letter_date')}</td>
+                    <td>{$_Litigation->getData('eq_litigation')}</td>
+                    <td>{$_Litigation->getData('in_litigation')}</td>
+                    <td>{$_Litigation->getData('ma_litigation')}</td>
+                    <td>{$_Litigation->getData('bid_bond')}</td>
+                    <td>{$_Litigation->getData('type')}</td>
+                    <td>{$_Litigation->getData('if_close')}</td>
+                    <td>{$_Litigation->getData('progress')}</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $_Litigation->getData('id'))}" onclick='return del();'><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>&nbsp;
+                        <a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $_Litigation->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a>
+                    </td>
+                </tr>
+                {/volist}
+            </table>
+            {$litigations->render()}
+        </div>
+    </div>
+</div>
+</body>
+</html>

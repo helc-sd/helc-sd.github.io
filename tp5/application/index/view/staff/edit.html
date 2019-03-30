@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        {php}$action = request()->action() === 'add' ? 'save' : 'update';{/php}
+        <form action="{:url($action)}" method="post">
+            <label>员工编号:</label><br>
+            <input type="hidden" name="id" value="{$Staff->getData('id')}" />
+            <input type="text" name="staff_id" value="{$Staff->getData('staff_id')}" /><br>
+            <label>姓名:</label><br>
+            <input type="text" name="staff_name" value="{$Staff->getData('staff_name')}" /><br>
+            <label>性别:</label><br>
+            <input type="text" name="sex" value="{$Staff->getData('sex')}" /><br>
+            <label>密码:</label><br>
+            <input type="text" name="password" value="{$Staff->getData('password')}" /><br>
+            <label>角色:</label><br>
+            <input type="text" name="role" value="{$Staff->getData('role')}" /><br>
+            <label>分公司:</label><br>
+            <input type="text" name="company" value="{$Staff->getData('company')}" /><br>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事业部成员列表</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#">山东司报表</a></li>
+            <li class="active">区域完工/关闭/在制情况(完工日期:{$Think.session.complete_date})</li>
+        </ol>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>区域</th>
+                    <th class="text-right">完工指标</th>
+                    <th class="text-right">完工</th>
+                    <th class="text-right">完工率%</th>
+                    <th class="text-right">关闭</th>
+                    <th class="text-right">关闭率%</th>
+                    <th class="text-right">在制</th>
+                    <th class="text-right">财年</th>
+                </tr>
+                {volist name="sdcompanyindexs" id="_Sdcompanyindex"}
+                <tr>
+                    <td>{$_Sdcompanyindex->getData('scompany')}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('install_index')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('install_complete')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('install_rate')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('close')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('close_rate')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('making')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('year')}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        {$sdcompanyindexs->render()}
+    </div>
+</div>
+</body>
+</html>

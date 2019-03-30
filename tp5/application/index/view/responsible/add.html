@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#">设置</a></li>
+            <li class="active">营业/监理/收款专员维护</li>
+            <li class="active">新增</li>
+        </ol>
+        <form class="form-inline" action="{:url('insert')}" method="post">
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">员工编号</span>
+                <input type="text" class="form-control" name="emid" placeholder="" aria-describedby="basic-addon1">
+            </div><br><br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2">员工姓名</span>
+                <input type="text" class="form-control" name="name" placeholder="" aria-describedby="basic-addon1">
+            </div><br><br>
+            <div class="form-group">
+                <select class="form-control selectpicker" name="company" title="请选择分公司" >
+                    <option value="济南大区">济南大区</option>
+                    <option value="青岛分公司">青岛分公司</option>
+                    <option value="潍坊分公司">潍坊分公司</option>
+                    <option value="烟台分公司">烟台分公司</option>
+                    <option value="临沂分公司">临沂分公司</option>
+                    <option value="济宁分公司">济宁分公司</option>
+                    <option value="德州分公司">德州分公司</option>
+                    <option value="东营分公司">东营分公司</option>
+                    <option value="菏泽办事处">菏泽办事处</option>
+                </select>
+            </div><br><br>
+            <div class="form-group">
+                <select class="form-control selectpicker" name="position" title="请选择职位" >
+                    <option value="营业员">营业员</option>
+                    <option value="项目经理">项目经理</option>
+                    <option value="收款专员">收款专员</option>
+                    <option value="维保业务经理">维保业务经理</option>
+                </select>
+            </div><br><br>
+            <div class="form-group">
+                <select class="form-control selectpicker" name="status" title="请选择在职状态" >
+                    <option value="在职">在职</option>
+                    <option value="离职">离职</option>
+                </select>
+            </div><br><br>
+            <hr />
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline" action="{:url('insert')}" method="post">
+            <label>旧密码:</label><br>
+            <input type="text" name="staff_id" required="required" /><br>
+            <label>设置新密码:</label><br>
+            <input type="text" name="staff_name" required="required" /><br>
+            <label>再次确认新密码:</label><br>
+            <input type="text" name="staff_post" required="required" />
+            <hr />
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

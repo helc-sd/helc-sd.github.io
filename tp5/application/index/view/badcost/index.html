@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事业部成员列表</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="staff_id">员工编号</label>
+                        <input name="staff_id" type="text" class="form-control" placeholder="员工编号..."value="{:input('get.staff_id')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+                <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="info">
+                <th>序号</th>
+                <th>员工编号</th>
+                <th>所属事业部</th>
+                <th>费用内容</th>
+                <th>费用金额</th>
+                <th>收入扣减</th>
+                <th>季度薪酬池减少</th>
+                <th>季度费用池减少</th>
+                <th>财年薪酬池减少</th>
+                <th>财年费用池减少</th>
+                <th>申请日期</th>
+                <th>操作</th>
+            </tr>
+            {volist name="badcosts" id="_Badcost" key="key"}
+            <tr>
+                <td>{$key}</td>
+                <td>{$_Badcost->getData('staff_id')}</td>
+                <td>{$_Badcost->getData('staff_bu')}</td>
+                <td>{$_Badcost->getData('cost_content')}</td>
+                <td>{$_Badcost->getData('cost_amount')}</td>
+                <td>{$_Badcost->getData('buincome_subtract')}</td>
+                <td>{$_Badcost->getData('quarter_pay_subtract')}</td>
+                <td>{$_Badcost->getData('quarter_cost_subtract')}</td>
+                <td>{$_Badcost->getData('year_pay_subtract')}</td>
+                <td>{$_Badcost->getData('year_cost_subtract')}</td>
+                <td>{$_Badcost->getData('apply_date')}</td>
+                <td><a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $_Bucost->getData('id'))}"><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>&nbsp;<a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $_Bucost->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a></td>
+            </tr>
+            {/volist}
+        </table>
+        </div>
+        {$badcosts->render()}
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form class="form-inline" action="{:url('insert')}" method="post">
+            <label>员工编号:</label><br>
+            <input type="text" name="staff_id" required="required" /><br>
+            <label>姓名:</label><br>
+            <input type="text" name="staff_name" required="required" /><br>
+            <label>岗位:</label><br>
+            <input type="text" name="staff_post" required="required" /><br>
+            <label>所属事业部:</label><br>
+            <input type="text" name="staff_bu" required="required"  /><br>
+            <label>分公司:</label><br>
+            <input type="text" name="company" required="required"  /><br>
+            <label>是否CEO:</label><br>
+            <select name="if_ceo">
+                <option value="0">否</option>
+                <option value="1">是</option>
+            </select>
+            <select name="if_quit">
+                <option value="0">否</option>
+                <option value="1">是</option>
+            </select>
+            <hr />
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('update')}" method="post">
+            <label>员工编号:</label><br>
+            <input type="hidden" name="id" value="{$Bucost->getData('id')}" />
+            <input type="text" name="staff_id" disabled="disabled" value="{$Bucost->getData('staff_id')}" /><br>
+            <label>报销人:</label><br>
+            <input type="text" name="staff_name" disabled="disabled" value="{$Bucost->getData('staff_name')}" /><br>
+            <label>所属事业部:</label><br>
+            <input type="text" name="staff_bu" value="{$Bucost->getData('staff_bu')}" /><br>
+            <label>报销单内容:</label><br>
+            <input type="text" name="cost_content" value="{$Bucost->getData('cost_content')}" /><br>
+            <label>报销金额:</label><br>
+            <input type="text" name="cost_sum" value="{$Bucost->getData('cost_sum')}" /><br>
+            <label>报销类别:</label><br>
+            <select name="cost_type">
+                <option value="{$Bucost->getData('cost_type')}">{$Bucost->getData('cost_type')}</option>
+                <option>月度</option>
+                <option>年度</option>
+            </select><br>
+            <label>报销日期:</label><br>
+            <input type="date" name="reim_date" value="{$Bucost->getData('reim_date')}" /><br>
+            <label>备注:</label><br>
+            <textarea type="text" name="remarks" >{$Bucost->getData('remarks')}</textarea><br>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

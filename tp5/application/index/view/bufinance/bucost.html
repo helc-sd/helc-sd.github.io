@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>区域完工明细</title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <ol class="breadcrumb">
+            <li><a href="#">事业部报表</a></li>
+            <li class="active">报销明细</li>
+        </ol>
+
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>姓名</th>
+                    <th>事业部</th>
+                    <th>费用类型</th>
+                    <th>金额</th>
+                    <th>类别</th>
+                    <th>报销日期</th>
+                </tr>
+                {volist name="result" id="vo"}
+                <tr>
+                    <td>{$vo.staff_name}</td>
+                    <td>{$vo.staff_bu}</td>
+                    <td>{$vo.cost_content}</td>
+                    <td>{$vo.cost_sum}</td>
+                    <td>{$vo.cost_type}</td>
+                    <td>{$vo.reim_date}</td>
+                    {/volist}
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

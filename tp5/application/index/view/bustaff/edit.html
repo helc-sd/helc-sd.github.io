@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('update')}" method="post">
+            <label>员工编号:</label><br>
+            <input type="hidden" name="id" value="{$Bustaff->getData('id')}" />
+            <input type="text" name="staff_id" value="{$Bustaff->getData('staff_id')}" /><br>
+            <label>姓名:</label><br>
+            <input type="text" name="staff_name" value="{$Bustaff->getData('staff_name')}" /><br>
+            <label>岗位:</label><br>
+            <input type="text" name="staff_post" value="{$Bustaff->getData('staff_post')}" /><br>
+            <label>所属事业部:</label><br>
+            <input type="text" name="staff_bu" value="{$Bustaff->getData('staff_bu')}" /><br>
+            <label>分公司:</label><br>
+            <input type="text" name="company" value="{$Bustaff->getData('company')}" /><br>
+            <label>是否CEO:</label><br>
+            <select name="if_ceo">
+                <option value="0">否</option>
+                <option value="1" {eq name="Bustaff->getData('if_ceo')" value="1"}selected="selected"{/eq}>是</option>
+            </select><br>
+            <label>是否离职:</label><br>
+            <select name="if_quit">
+                <option value="0">否</option>
+                <option value="1" {eq name="Bustaff->getData('if_quit')" value="1"}selected="selected"{/eq}>是</option>
+            </select><br>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

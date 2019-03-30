@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('auditupdate')}" method="post">
+            <label>合同号:</label><br>
+            <input type="hidden" name="id" value="{$Bycontract->getData('id')}" />
+            <input type="text" name="contract_id" disabled="disabled" value="{$Bycontract->getData('contract_id')}" /><br>
+
+            <label>项目名称:</label><br>
+            <input type="text" name="project_name" value="{$Bycontract->getData('project_name')}" /><br>
+            <label>合同金额:</label><br>
+            <input type="text" name="contract_amount" value="{$Bycontract->getData('contract_amount')}" /><br>
+            <label>售后服务部提交时间:</label><br>
+            <input type="date" name="submission_date" value="{$Bycontract->getData('submission_date')}" /><br>
+            <hr />
+            <label>合同部接收日期:</label><br>
+            <input type="date" name="receiving_date" value="{$Bycontract->getData('receiving_date')}" /><br>
+            <label>盖章日期:</label><br>
+            <input type="date" name="stamp_date" value="{$Bycontract->getData('stamp_date')}" /><br>
+            <label>审核人:</label><br>
+            <select name="auditor" value="{$Bycontract->getData('auditor')}">
+                <option>{$Bycontract->getData('auditor')}</option>
+                <option>刘洋</option>
+                <option>景彤彤</option>
+            </select><br>
+            <hr />
+            <button type="submit" class="btn btn-danger">审核</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

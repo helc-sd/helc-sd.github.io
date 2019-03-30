@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <hr />
+    <div class="col-md-12">
+        <form class="form-inline" action="{:url('insert')}" method="post">
+            <label>员工编号:</label><br>
+            <input type="text" name="staff_id" /><br>
+            <label>报销人:</label><br>
+            <input type="text" name="staff_name" /><br>
+            <label>所属事业部:</label><br>
+            <input type="text" name="staff_bu" /><br>
+            <label>报销单内容:</label><br>
+            <input type="text" name="cost_content"  /><br>
+            <label>报销金额:</label><br>
+            <input type="text" name="cost_sum"  /><br>
+            <label>报销类型:</label><br>
+            <select name="cost_type">
+                <option>月度</option>
+                <option>年度</option>
+            </select><br>
+            <label>报销日期:</label><br>
+            <input type="date" name="reim_date"  /><br>
+            <label>备注:</label><br>
+            <textarea type="text" name="remarks" class="textarea"> </textarea>
+            <hr />
+            <button type="submit">新增</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事业部成员列表</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#">山东司报表</a></li>
+            <li class="active">区域历史欠款及回收情况</li>
+        </ol>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>区域</th>
+                    <th class="text-right">设备历史欠款</th>
+                    <th class="text-right">回收</th>
+                    <th class="text-right">回收率%</th>
+                    <th class="text-right">安装历史欠款</th>
+                    <th class="text-right">回收</th>
+                    <th class="text-right">回收率%</th>
+                    <th class="text-right">财年</th>
+                </tr>
+                {volist name="sdcompanyindexs" id="_Sdcompanyindex"}
+                <tr>
+                    <td>{$_Sdcompanyindex->getData('scompany')}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('eq_arrears')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('eq_recovery')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('eq_rate')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('in_arrears')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('in_recovery')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('in_rate')|round=2}</td>
+                    <td class="text-right">{$_Sdcompanyindex->getData('year')}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        {$sdcompanyindexs->render()}
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <hr />
+    <div class="col-md-12">
+        <form class="form-inline" action="{:url('insert')}" method="post">
+            <label>合同号:</label><br>
+            <input type="text" name="contract_id" /><br>
+            <label>销售区域:</label><br>
+            <input type="text" name="sale_company" /><br>
+            <label>安装区域:</label><br>
+            <input type="text" name="install_company" /><br>
+            <label>是否关闭:</label><br>
+            <select name="if_close">
+                <option>否</option>
+                <option>是</option>
+            </select><br>
+            <hr />
+            <button type="submit">新增</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>

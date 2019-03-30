@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--诉讼模块-->
+<div class="tab-pane " id="litigation">
+    <div class="page-header">
+        <h4>未结诉讼<small></small></h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="danger">
+                <th>区域</th>
+                <th class="text-left">合同号</th>
+                <th class="text-right">金额</th>
+                <th class="text-left">买方单位</th>
+                <th class="text-left">进展</th>
+            </tr>
+            {volist name="result3" id="result3"}
+            <tr>
+                <td>{$result3.company}</td>
+                <td class="text-left">{$result3.contract_id}</td>
+                <td class="text-right">{$result3.amount}</td>
+                <td class="text-left">{$result3.buyer}</td>
+                <td class="text-left">{$result3.progress}</td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+    <div class="page-header">
+        <h4>未结律师函<small></small></h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="danger">
+                <th>区域</th>
+                <th class="text-left">合同号</th>
+                <th class="text-right">金额</th>
+                <th class="text-left">发函日期</th>
+                <th class="text-left">买方单位</th>
+            </tr>
+            {volist name="result4" id="result4"}
+            <tr>
+                <td>{$result4.company}</td>
+                <td class="text-left">{$result4.contract_id}</td>
+                <td class="text-right">{$result4.amount}</td>
+                <td class="text-left">{$result4.letter_date}</td>
+                <td class="text-left">{$result4.buyer}</td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+    <div class="page-header">
+        <h4>诉讼已申请(申请强制执行，但被告无财产可供执行)<small></small></h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="danger">
+                <th>区域</th>
+                <th class="text-left">合同号</th>
+                <th class="text-right">金额</th>
+                <th class="text-left">买方单位</th>
+            </tr>
+            {volist name="result5" id="result5"}
+            <tr>
+                <td>{$result5.company}</td>
+                <td class="text-left">{$result5.contract_id}</td>
+                <td class="text-right">{$result5.amount}</td>
+                <td class="text-left">{$result5.buyer}</td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+
+</div>
+<!--/诉讼模块-->
+</body>
+</html>

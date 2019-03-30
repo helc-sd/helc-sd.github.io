@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>维保数据</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="company">分公司</label>
+                        <input name="company" type="text" class="form-control" placeholder="分公司..."value="{:input('get.company')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+                <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>分公司</th>
+                    <th>在保平均价格</th>
+                    <th>新签年平均价格</th>
+                    <th>单梯保养成本</th>
+                    <th>毛利率</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="maintains" id="_Maintain" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$_Maintain->getData('company')}</td>
+                    <td>{$_Maintain->getData('guarantee_ave_year')}</td>
+                    <td>{$_Maintain->getData('new_ave_year')}</td>
+                    <td>{$_Maintain->getData('maintain_cost_single')}</td>
+                    <td>{$_Maintain->getData('gross_profit_margin')}</td>
+                    <td>&nbsp;
+                        <a class="btn btn-sm btn-primary" href="{:url('profitedit?id=' . $_Maintain->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a>
+                    </td>
+                </tr>
+                {/volist}
+            </table>
+            {$maintains->render()}
+        </div>
+    </div>
+</div>
+</body>
+</html>

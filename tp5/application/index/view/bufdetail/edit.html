@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('update')}" method="post">
+            <label>员工编号:</label><br>
+            <div class="input-group">
+                <input type="hidden" name="id" value="{$Bufdetail->getData('id')}" />
+                <span class="input-group-addon" id="basic-addon1">事业部名称</span>
+                <input type="text" class="form-control" name="bu_name" placeholder="" aria-describedby="basic-addon1" value="{$Bufdetail->getData('bu_name')}">
+            </div><br><br>
+            <div class="form-group">
+                <select class="form-control selectpicker" name="company">
+                    <option value="{$Bufdetail->getData('company')}">{$Bufdetail->getData('company')}</option>
+                    <option value="济南大区">济南大区</option>
+                    <option value="青岛分公司">青岛分公司</option>
+                    <option value="潍坊分公司">潍坊分公司</option>
+                    <option value="烟台分公司">烟台分公司</option>
+                    <option value="临沂分公司">临沂分公司</option>
+                    <option value="济宁分公司">济宁分公司</option>
+                    <option value="德州分公司">德州分公司</option>
+                    <option value="东营分公司">东营分公司</option>
+                    <option value="菏泽办事处">菏泽办事处</option>
+                </select>
+            </div><br><br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2">季度薪酬池</span>
+                <input type="text" class="form-control" name="quarter_pay" placeholder="" aria-describedby="basic-addon2" value="{$Bufdetail->getData('quarter_pay')}">
+            </div><br><br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon3">季度费用池</span>
+                <input type="text" class="form-control" name="quarter_cost" placeholder="" aria-describedby="basic-addon3" value="{$Bufdetail->getData('quarter_cost')}">
+            </div><br><br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon4">财年薪酬池</span>
+                <input type="text" class="form-control" name="year_pay" placeholder="" aria-describedby="basic-addon4" value="{$Bufdetail->getData('year_pay')}">
+            </div><br><br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon5">财年费用池</span>
+                <input type="text" class="form-control" name="year_cost" placeholder="" aria-describedby="basic-addon5" value="{$Bufdetail->getData('year_cost')}">
+            </div><br><br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon6">月份</span>
+                <input type="text" class="form-control" name="month" placeholder="" aria-describedby="basic-addon6" value="{$Bufdetail->getData('month')}">
+            </div><br><br>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon7">财年</span>
+                <input type="text" class="form-control" name="year" placeholder="" aria-describedby="basic-addon7" value="{$Bufdetail->getData('year')}">
+            </div><br><br>
+            <label>备注:</label><br>
+            <textarea rows="5" cols="40" type="text" name="remarks" class="textarea"> {$Bufdetail->getData('remarks')}</textarea>
+            <hr />
+            <button type="submit">更新</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

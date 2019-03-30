@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('update')}" method="post">
+            <label>合同号:</label><br>
+            <input type="hidden" name="id" value="{$Bycontract->getData('id')}" />
+            <input type="text" name="contract_id"  value="{$Bycontract->getData('contract_id')}" /><br>
+            <label>分公司:</label><br>
+            <input type="text" name="company" value="{$Bycontract->getData('company')}" /><br>
+            <label>业务经理:</label><br>
+            <input type="text" name="business_manager" value="{$Bycontract->getData('business_manager')}" /><br>
+            <label>甲方:</label><br>
+            <input type="text" name="party_a" value="{$Bycontract->getData('party_a')}" /><br>
+            <label>乙方:</label><br>
+            <input type="text" name="party_b" value="{$Bycontract->getData('party_b')}" /><br>
+            <label>合同类型:</label><br>
+            <select name="contract_type" value="{$Bycontract->getData('contract_type')}">
+                <option>{$Bycontract->getData('contract_type')}</option>
+                <option>保养</option>
+                <option>维改</option>
+            </select><br>
+            <label>项目名称:</label><br>
+            <input type="text" name="project_name" value="{$Bycontract->getData('project_name')}" /><br>
+            <label>合同金额:</label><br>
+            <input type="text" name="contract_amount" value="{$Bycontract->getData('contract_amount')}" /><br>
+            <label>售后服务部提交时间:</label><br>
+            <input type="date" name="submission_date" value="{$Bycontract->getData('submission_date')}" /><br>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

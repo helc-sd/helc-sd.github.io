@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#">事业部报表</a></li>
+            <li class="active">事业部PPM完成情况</li>
+        </ol>
+<!--事业部模块-->
+<div class="tab-pane " id="litigation">
+    <div class="page-header">
+        <h4>事业部总体得分排名<small></small></h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="danger">
+                <th>排名</th>
+                <th class="text-left">事业部</th>
+                <th class="text-left">区域</th>
+                <th class="text-right">总得分</th>
+                <th class="text-right">生效</th>
+                <th class="text-right">完工</th>
+                <th class="text-right">当年欠款</th>
+                <th class="text-right">历史欠款</th>
+
+            </tr>
+            {volist name="result1" id="result1"}
+            <tr>
+                <td>{$result1.rank}</td>
+                <td class="text-left">{$result1.bu_sname}</td>
+                <td class="text-left">{$result1.company}</td>
+                <td class="text-right">{$result1.score}</td>
+                <td class="text-right">{$result1.intoforce}</td>
+                <td class="text-right">{$result1.complete}</td>
+                <td class="text-right">{$result1.thisyear}</td>
+                <td class="text-right">{$result1.history}</td>
+
+            </tr>
+            {/volist}
+        </table>
+    </div>
+    <div class="page-header">
+        <h4>事业部生效得分排名<small></small></h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="danger">
+                <th>排名</th>
+                <th class="text-left">事业部</th>
+                <th class="text-left">区域</th>
+                <th class="text-right">得分</th>
+                <th class="text-right">指标</th>
+                <th class="text-right">生效</th>
+                <th class="text-right">完成率</th>
+
+            </tr>
+            {volist name="result2" id="result2"}
+            <tr>
+                <td>{$result2.rank}</td>
+                <td class="text-left">{$result2.bu_sname}</td>
+                <td class="text-left">{$result2.company}</td>
+                <td class="text-right">{$result2.score}</td>
+                <td class="text-right">{$result2.year_index}</td>
+                <td class="text-right">{$result2.year_complete}</td>
+                <td class="text-right">{$result2.rate}</td>
+
+            </tr>
+            {/volist}
+        </table>
+    </div>
+    <div class="page-header">
+        <h4>事业部完工得分排名<small></small></h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="danger">
+                <th class="text-left">排名</th>
+                <th class="text-left">事业部</th>
+                <th class="text-left">区域</th>
+                <th class="text-right">得分</th>
+                <th class="text-right">指标</th>
+                <th class="text-right">完工</th>
+                <th class="text-right">完成率</th>
+
+            </tr>
+            {volist name="result3" id="result3"}
+            <tr>
+                <td class="text-left">{$result3.rank}</td>
+                <td class="text-left">{$result3.bu_sname}</td>
+                <td class="text-left">{$result3.company}</td>
+                <td class="text-right">{$result3.score}</td>
+                <td class="text-right">{$result3.year_index}</td>
+                <td class="text-right">{$result3.year_complete}</td>
+                <td class="text-right">{$result3.rate}</td>
+
+            </tr>
+            {/volist}
+        </table>
+    </div>
+    <div class="page-header">
+        <h4>事业部当年欠款得分排名<small></small></h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="danger">
+                <th class="text-left">排名</th>
+                <th class="text-left">事业部</th>
+                <th class="text-left">区域</th>
+                <th class="text-right">得分</th>
+                <th class="text-right">合同额</th>
+                <th class="text-right">欠款</th>
+                <th class="text-right">欠款率</th>
+
+            </tr>
+            {volist name="result4" id="result4"}
+            <tr>
+                <td class="text-left">{$result4.rank}</td>
+                <td class="text-left">{$result4.bu_sname}</td>
+                <td class="text-left">{$result4.company}</td>
+                <td class="text-right">{$result4.score}</td>
+                <td class="text-right">{$result4.contract_amount}</td>
+                <td class="text-right">{$result4.this_arrears}</td>
+                <td class="text-right">{$result4.rate}</td>
+
+            </tr>
+            {/volist}
+        </table>
+    </div>
+    <div class="page-header">
+        <h4>事业部历史欠款得分排名<small></small></h4>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="danger">
+                <th class="text-left">排名</th>
+                <th class="text-left">事业部</th>
+                <th class="text-left">区域</th>
+                <th class="text-right">得分</th>
+                <th class="text-right">欠款</th>
+                <th class="text-right">回收</th>
+                <th class="text-right">回收率</th>
+
+            </tr>
+            {volist name="result5" id="result5"}
+            <tr>
+                <td class="text-left">{$result5.rank}</td>
+                <td class="text-left">{$result5.bu_sname}</td>
+                <td class="text-left">{$result5.company}</td>
+                <td class="text-right">{$result5.score}</td>
+                <td class="text-right">{$result5.arrears}</td>
+                <td class="text-right">{$result5.recovery}</td>
+                <td class="text-right">{$result5.rate}</td>
+
+            </tr>
+            {/volist}
+        </table>
+    </div>
+
+
+</div>
+<!--/事业部模块-->
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>入金明细</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#"><span class = "glyphicon glyphicon-option-vertical"></span>合同管理部</a></li>
+            <li class="active">入金统计</li>
+        </ol>
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="contract_id">合同号</label>
+                        <input name="contract_id" type="text" class="form-control" placeholder="合同号..."value="{:input('get.contract_id')}">
+                        <label class="sr-only" id="product_id">工号</label>
+                        <input name="product_id" type="text" class="form-control" placeholder="工号..."value="{:input('get.product_id')}">
+                        <label class="sr-only" id="bu_name">事业部</label>
+                        <input name="bu_name" type="text" class="form-control" placeholder="事业部..."value="{:input('get.bu_name')}">
+                        <label class="sr-only" id="income_date_from">拆分日期从</label>
+                        <input name="income_date_from" type="text" required="required" class="form-control" placeholder="拆分日期从..."value="{:input('get.income_date_from')}">
+                        <label class="sr-only" id="income_date_to">u</label>
+                        <input name="income_date_to" type="text" required="required" class="form-control" placeholder="拆分日期至..."value="{:input('get.income_date_to')}">
+
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-4 text-left">
+                <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+                <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+        <table class="table table-hover table-bordered table-striped table-condensed">
+            <tr class="info">
+                <th>ID</th>
+                <th>生产工号</th>
+                <th>合同号</th>
+                <th>收款编号</th>
+                <th>拆分金额</th>
+                <th>收款人</th>
+                <th>欠款-事业部</th>
+                <th>入金-事业部</th>
+                <th>拆分日期</th>
+                <th>跨区域</th>
+                <th>操作</th>
+            </tr>
+            {volist name="incomes" id="_Income" key="key"}
+            <tr>
+                <td>{$_Income->getData('id')}</td>
+                <td>{$_Income->getData('product_id')}</td>
+                <td>{$_Income->getData('contract_id')}</td>
+                <td>{$_Income->getData('receipt_id')}</td>
+                <td>{$_Income->getData('split_amount')}</td>
+                <td>{$_Income->getData('payee')}</td>
+                <td>{$_Income->getData('bu_name')}</td>
+                <td>{$_Income->getData('income_bu')}</td>
+                <td>{$_Income->getData('income_date')}</td>
+                <td>{$_Income->getData('cross_region')}</td>
+                <td>
+                    <a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $_Income->getData('id'))}" onclick='return del();'><i class="glyphicon glyphicon-trash"></i>&nbsp</a>&nbsp;
+                    <a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $_Income->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i></a>
+                </td>
+            </tr>
+            {/volist}
+        </table>
+        </div>
+        {$incomes->render()}
+    </div>
+</div>
+</body>
+</html>

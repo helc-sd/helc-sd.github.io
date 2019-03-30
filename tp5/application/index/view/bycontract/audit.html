@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>售后非标合同列表</title>
+</head>
+<body>
+<ol class="breadcrumb">
+    <li><a href="#"><span class = "glyphicon glyphicon-option-vertical"></span>合同管理部</a></li>
+    <li class="active">售后非标合同审核</li>
+</ol>
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="bycontract_contract_id">合同号</label>
+                        <input name="bycontract_contract_id" type="text" class="form-control" placeholder="合同号..."value="{:input('get.bycontract_contract_id')}">
+                        <label class="sr-only" id="bycontract_party_a">甲方</label>
+                        <input name="bycontract_party_a" type="text" class="form-control" placeholder="甲方..."value="{:input('get.bycontract_party_a')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                        <a href="{:url('export')}" class="btn btn-success"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+                </form>
+
+            </div>
+
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>ID</th>
+                    <th>合同号</th>
+                    <th>分公司</th>
+                    <th>业务经理</th>
+                    <th>甲方</th>
+                    <th>乙方</th>
+                    <th>合同类型</th>
+                    <th>项目名称</th>
+                    <th>合同金额</th>
+                    <th>提交时间</th>
+                    <th>接收时间</th>
+                    <th>盖章日期</th>
+                    <th>审核人</th>
+                    <th style='width:10%;'>操作</th>
+                </tr>
+                {volist name="bycontracts" id="_Bycontract" key="key"}
+                <tr>
+                    <td>{$_Bycontract->getData('id')}</td>
+                    <td>{$_Bycontract->getData('contract_id')}</td>
+                    <td>{$_Bycontract->getData('company')}</td>
+                    <td>{$_Bycontract->getData('business_manager')}</td>
+                    <td>{$_Bycontract->getData('party_a')}</td>
+                    <td>{$_Bycontract->getData('party_b')}</td>
+                    <td>{$_Bycontract->getData('contract_type')}</td>
+                    <td>{$_Bycontract->getData('project_name')}</td>
+                    <td>{$_Bycontract->getData('contract_amount')}</td>
+                    <td>{$_Bycontract->getData('submission_date')}</td>
+                    <td>{$_Bycontract->getData('receiving_date')}</td>
+                    <td>{$_Bycontract->getData('stamp_date')}</td>
+                    <td>{$_Bycontract->getData('auditor')}</td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $_Bycontract->getData('id'))}" onclick='return del();'><i class="glyphicon glyphicon-trash"></i></a>
+                        <a class="btn btn-sm btn-primary" href="{:url('auditedit?id=' . $_Bycontract->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i></a>
+                    </td>
+                </tr>
+                {/volist}
+            </table>
+            {$bycontracts->render()}
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    function del()
+    {
+        if(confirm("确定要删除吗？"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+</script>
+</html>

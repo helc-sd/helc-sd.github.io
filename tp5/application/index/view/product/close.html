@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>入金明细</title>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="contract_id">合同号</label>
+                        <input name="contract_id" type="text" class="form-control" placeholder="合同号..."value="{:input('get.contract_id')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{:url('exportClose')}" class="btn btn-danger"><i class="glyphicon glyphicon-export"></i>&nbsp;导出</a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>生产工号</th>
+                    <th>合同号</th>
+                    <th>营业员</th>
+                    <th>绩效归属</th>
+                    <th>完工日期</th>
+                    <th>关闭日期</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="products" id="_Product" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$_Product->getData('product_id')}</td>
+                    <td>{$_Product->getData('contract_id')}</td>
+                    <td>{$_Product->getData('sales_person')}</td>
+                    <td>{$_Product->getData('belong_to')}</td>
+                    <td>{$_Product->getData('complete_date')}</td>
+                    <td>{$_Product->getData('close_date')}</td>
+                    <td>&nbsp;<a class="btn btn-sm btn-primary" href="{:url('closeEdit?id=' . $_Product->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a></td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        {$products->render()}
+    </div>
+</div>
+</body>
+</html>

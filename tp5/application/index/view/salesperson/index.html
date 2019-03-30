@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="page-header">
+    <h4>基本信息<small></small></h4>
+</div>
+<p>姓名：{$Think.session.salesperson_name}</p>
+<p>所属区域：{$Think.session.salesperson_company}</p>
+<p>所属事业部：{$Think.session.salesperson_bu_name}</p>
+<div class="page-header">
+    <h4>待签订数据<small></small></h4>
+</div>
+<div class="page-header">
+    <h4>待生效数据<small></small></h4>
+</div>
+<div class="page-header">
+    <h4>生效数据<small></small></h4>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-bordered table-striped table-condensed">
+        <tr class="danger">
+            <th class="text-left">生效台量</th>
+            <th class="text-left">山东司平均</th>
+        </tr>
+        {volist name="salesperson" id="salesperson"}
+        <tr>
+            <td class="text-left">{$salesperson.into_force_num}</td>
+            <td class="text-left">{$salesperson.avg_into_force_num}</td>
+        </tr>
+        {/volist}
+    </table>
+</div>
+<div class="page-header">
+    <h4>保证金数据<small></small></h4>
+</div>
+<div class="page-header">
+    <h4>欠款数据<small></small></h4>
+</div>
+</body>
+</html>

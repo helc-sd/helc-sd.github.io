@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>修改</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('update')}" method="post">
+            <table>
+                <tr>
+                    <td>
+                        <label>生产工号:</label><br>
+                        <input type="hidden" name="id" value="{$Arrears->getData('id')}" />
+                        <input type="text" name="product_id" value="{$Arrears->getData('product_id')}" /><br>
+
+                    </td>
+                    <td>&nbsp&nbsp&nbsp</td>
+                    <td>
+                        <label>合同号:</label><br>
+                        <input type="text" name="contract_id" value="{$Arrears->getData('contract_id')}" /><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>买方单位:</label><br>
+                        <input type="text" name="buyer" value="{$Arrears->getData('buyer')}" /><br>
+                    </td>
+                    <td>&nbsp&nbsp&nbsp</td>
+                    <td>
+                        <label>大客户:</label><br>
+                        <select name="big_customer" value="{$Arrears->getData('big_customer')}">
+                            <option>{$Arrears->getData('big_customer')}</option>
+                            <option>普通</option>
+                            <option>KA</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>大项目:</label><br>
+                        <select name="big_project" value="{$Arrears->getData('big_project')}">
+                            <option>{$Arrears->getData('big_project')}</option>
+                            <option>普通</option>
+                            <option>大项目</option>
+                        </select>
+                    </td>
+                    <td>&nbsp&nbsp&nbsp</td>
+                    <td>
+                        <label>到期应收日期:</label><br>
+                        <input type="date" name="expire_date" value="{$Arrears->getData('expire_date')}" /><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>欠款金额:</label><br>
+                        <input type="text" name="arrears_amount" value="{$Arrears->getData('arrears_amount')}" /><br>
+                    </td>
+                    <td>&nbsp&nbsp&nbsp</td>
+                    <td>
+                        <label>分公司:</label><br>
+                        <input type="text" name="company" value="{$Arrears->getData('company')}" /><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>欠款人:</label><br>
+                        <input type="text" name="arrears_staff" value="{$Arrears->getData('arrears_staff')}"/><br>
+                    </td>
+                    <td>&nbsp&nbsp&nbsp</td>
+                    <td>
+                        <label>事业部名称:</label><br>
+                        <input type="text" name="bu_name" value="{$Arrears->getData('bu_name')}"/><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>欠款类型:</label><br>
+                        <select name="arrears_type" value="{$Arrears->getData('arrears_type')}">
+                            <option>{$Arrears->getData('arrears_type')}</option>
+                            <option>设备欠款</option>
+                            <option>安装欠款</option>
+                        </select>
+                    </td>
+                    <td>&nbsp&nbsp&nbsp</td>
+                    <td>
+                        <label>欠款调整项:</label><br>
+                        <input type="text" name="arrears_adjust" value="{$Arrears->getData('arrears_adjust')}" /><br>
+                    </td>
+                </tr>
+            </table>
+            <hr />
+            <button type="submit">更新</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

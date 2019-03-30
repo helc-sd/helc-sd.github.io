@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;增加</a>
+        <hr />
+        <table class="table table-hover table-bordered">
+            <tr class="info">
+                <th>序号</th>
+                <th>组织名称</th>
+                <th>组织代码</th>
+                <th>组织层级</th>
+                <th>父级代码</th>
+            </tr>
+            {volist name="orgstructures" id="orgstructure" key="key"}
+            <tr>
+                <td>{$key}</td>
+                <td>{$orgstructure->getData('org_name')}</td>
+                <td>{$orgstructure->getData('org_id')}</td>
+                <td>{$orgstructure->getData('org_level')}</td>
+                <td>{$orgstructure->getData('parent_id')}</td>
+            </tr>
+            {/volist}
+        </table>
+    </div>
+</div>

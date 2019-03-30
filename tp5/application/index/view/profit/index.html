@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盈利分享</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <hr />
+        <div class="row">
+            <div class="col-md-8">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label class="sr-only" id="staff_name">姓名</label>
+                        <input name="staff_name" type="text" class="form-control" placeholder="姓名..."value="{:input('get.staff_name')}">
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+                </form>
+            </div>
+            <div class="col-md-4 text-right">
+                <a href="{:url('add')}" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>&nbsp;新增</a>
+            </div>
+        </div>
+        <hr />
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>事业部名称</th>
+                    <th>平均设备签约价</th>
+                    <th>区域平均设备签约价</th>
+                    <th>合同签订安装价</th>
+                    <th>标准安装价</th>
+                    <th>安装支出</th>
+                    <th>不良费用</th>
+                    <th>盈利分享奖金</th>
+                    <th>达标</th>
+                    <th>财年</th>
+                    <th>操作</th>
+                </tr>
+                {volist name="profits" id="_Profit" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$_Profit->getData('bu_name')}</td>
+                    <td>{$_Profit->getData('bu_eq_average'|round=2)}</td>
+                    <td>{$_Profit->getData('co_eq_average'|round=2)}</td>
+                    <td>{$_Profit->getData('bu_in_price'|round=2)}</td>
+                    <td>{$_Profit->getData('spl_in_price'|round=2)}</td>
+                    <td>{$_Profit->getData('install_pay'|round=2)}</td>
+                    <td>{$_Profit->getData('bad_cost')}</td>
+                    <td>{$_Profit->getData('profit_bonus')}</td>
+                    <td>{$_Profit->getData('if_reach')}</td>
+                    <td>{$_Profit->getData('financial_year')}</td>
+                    <td><a class="btn btn-danger btn-sm" href="{:url('delete?id=' . $_Profit->getData('id'))}" onclick='return del();'><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>&nbsp;<a class="btn btn-sm btn-primary" href="{:url('edit?id=' . $_Profit->getData('id'))}"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a></td>
+                </tr>
+                {/volist}
+            </table>
+            {$profits->render()}
+        </div>
+    </div>
+</div>
+</body>
+</html>

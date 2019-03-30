@@ -1,0 +1,802 @@
+<!-- 选项卡菜单-->
+<ul id="myTab" class="nav nav-tabs" role="tablist">
+    <li class="active"><a href="#bulletin" role="tab" data-toggle="tab">BI</a></li>
+    {eq name="Think.session.sale" value="1"}
+    <li><a href="#sale" role="tab" data-toggle="tab"><small>营业</small></a></li>
+    {else/}
+    {/eq}
+    {eq name="Think.session.install" value="1"}
+    <li><a href="#install" role="tab" data-toggle="tab"><small>安装</small></a></li>
+    {else/}
+    {/eq}
+    {eq name="Think.session.maintain" value="1"}
+    <li><a href="#after" role="tab" data-toggle="tab"><small>售后</small></a></li>
+    {else/}
+    {/eq}
+    {eq name="Think.session.arrears" value="1"}
+    <li><a href="#arrears" role="tab" data-toggle="tab"><small>欠款</small></a></li>
+    {else/}
+    {/eq}
+    {eq name="Think.session.litigation" value="1"}
+    <li><a href="#litigation" role="tab" data-toggle="tab"><small>BU</small></a></li>
+    {else/}
+    {/eq}
+</ul>
+<!-- /选项卡菜单-->
+<!-- 选项卡面板 -->
+<div id="myTabContent" class="tab-content">
+    <!--公告-->
+    <div class="tab-pane active" id="bulletin">
+        <h4>2018财年已使用:</h4>
+        <div class="progress">
+            <div class="progress-bar progress-bar-success progress-bar-striped active" role="progressbar" aria-valuenow="{$Think.session.yearpass}" aria-valuemin="0" aria-valuemax="100" style="width:{$Think.session.yearpass}%">
+                {$Think.session.yearpass}%
+            </div>
+        </div>
+        <h4>生效进度:</h4>
+        <div class="progress">
+            <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="{$Think.session.yearpass}" aria-valuemin="0" aria-valuemax="100" style="width:{$Think.session.sign_rate}%">
+                {$Think.session.sign_rate}%
+            </div>
+        </div>
+        <h4>完工进度:</h4>
+        <div class="progress">
+            <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="{$Think.session.yearpass}" aria-valuemin="0" aria-valuemax="100" style="width:{$Think.session.install_rate}%">
+                {$Think.session.install_rate}%
+            </div>
+        </div>
+        <h4>当年欠款欠款率(目标值≤9%):</h4>
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="{$Think.session.yearpass}" aria-valuemin="0" aria-valuemax="100" style="width:{$Think.session.this_year_rate}%">
+                {$Think.session.this_year_rate}%
+            </div>
+        </div>
+        <h4>历史欠款回收进度(目标值≥85%):</h4>
+        <div class="progress">
+            <div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar" aria-valuenow="{$Think.session.yearpass}" aria-valuemin="0" aria-valuemax="100" style="width:{$Think.session.arrears_rate}%">
+                {$Think.session.arrears_rate}%
+            </div>
+        </div>
+        <h4>快速查询:</h4>
+        <p><a class="btn btn-primary btn-block" href="{:url('Contract/sendtime')}" role="button">合同时效查询</a></p>
+        <p><a class="btn btn-primary btn-block" href="{:url('Litigation/report')}" role="button">诉讼查询</a></p>
+    </div>
+    <!--/公告-->
+    <!--营业模块-->
+    <div class="tab-pane " id="sale">
+        <div class="page-header">
+            <h4>山东司季度指标及生效数据<small>（生效日期:{$Think.session.intoforce_date}）</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>季度</th>
+                    <th class="text-right">指标</th>
+                    <th class="text-right">完成</th>
+                    <th class="text-right">完成率%</th>
+                </tr>
+                {volist name="result2" id="result2"}
+                <tr>
+                    <td>{$result2.quarter}</td>
+                    <td class="text-right">{$result2.sign_index}</td>
+                    <td class="text-right">{$result2.sign_complete}</td>
+                    <td class="text-right">{$result2.sign_rate}</td>
+                </tr>
+                    {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域生效/待生效/待签数据汇总<small>（生效日期:{$Think.session.intoforce_date}）</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>区域</th>
+                    <th class="text-right">指标</th>
+                    <th class="text-right">生效</th>
+                    <th class="text-right">完成率</th>
+                    <th class="text-right">待生效</th>
+                    <th class="text-right">待签订</th>
+                    <th class="text-right">合计</th>
+                </tr>
+                {volist name="result" id="vo"}
+                <tr>
+                    <td>{$vo.scompany}</td>
+                    <td class="text-right">{$vo.sign_index}</td>
+                    <td class="text-right">{$vo.sign_complete}</td>
+                    <td class="text-right">{$vo.sign_rate}</td>
+                    <td class="text-right">{$vo.pre_intoforce}</td>
+                    <td class="text-right">{$vo.pre_sign}</td>
+                    <td class="text-right">{$vo.total}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域指标及生效数据<small>（生效日期:{$Think.session.intoforce_date}）</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>区域</th>
+                    <th class="text-right">指标</th>
+                    <th class="text-right">实际</th>
+                    <th class="text-right">完成率</th>
+                    <th class="text-right">本月新增</th>
+                    <th class="text-right">卓越线</th>
+                    <th class="text-right">卓越率</th>
+                </tr>
+                {volist name="result" id="vo"}
+                {lt name="vo.sign_rate" value="$Think.session.sign_rate"}
+                <tr class = "warning">
+                    <td>{$vo.scompany}</td>
+                    <td class="text-right">{$vo.sign_index}</td>
+                    <td class="text-right">{$vo.sign_complete}</td>
+                    <td class="text-right">{$vo.sign_rate}</td>
+                    <td class="text-right">{$vo.this_month}</td>
+                    <td class="text-right">{$vo.excellent}</td>
+                    <td class="text-right">{$vo.excellent_rate}</td>
+                </tr>
+                {else/}
+                <tr >
+                    <td>{$vo.scompany}</td>
+                    <td class="text-right">{$vo.sign_index}</td>
+                    <td class="text-right">{$vo.sign_complete}</td>
+                    <td class="text-right">{$vo.sign_rate}</td>
+                    <td class="text-right">{$vo.this_month}</td>
+                    <td class="text-right">{$vo.excellent}</td>
+                    <td class="text-right">{$vo.excellent_rate}</td>
+                </tr>
+                {/lt}
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域生效数据大客户占比<small>（生效日期:{$Think.session.intoforce_date}）</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">普通客户</th>
+                    <th class="text-right">大客户</th>
+                    <th class="text-right">合计</th>
+                    <th class="text-right">大客户占比</th>
+
+                </tr>
+                {volist name="result23" id="result23"}
+                <tr>
+                    <td class="text-left">{$result23.company}</td>
+                    <td class="text-right">{$result23.sum1}</td>
+                    <td class="text-right">{$result23.sum2}</td>
+                    <td class="text-right">{$result23.sum}</td>
+                    <td class="text-right">{$result23.per}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域生效梯均价对比<small>（元）</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">17设备</th>
+                    <th class="text-right">18设备</th>
+                    <th class="text-right">17安装</th>
+                    <th class="text-right">18安装</th>
+
+                </tr>
+                {volist name="result24" id="result24"}
+                <tr>
+                    <td class="text-left">{$result24.company}</td>
+                    <td class="text-right">{$result24.17eq}</td>
+                    <td class="text-right">{$result24.18eq}</td>
+                    <td class="text-right">{$result24.17in}</td>
+                    <td class="text-right">{$result24.18in}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域待生效数据<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>区域</th>
+                    <th class="text-right">累计</th>
+                    <th class="text-right">365天内</th>
+                    <th class="text-right">本月新增</th>
+                </tr>
+                {volist name="result" id="vo"}
+                <tr>
+                    <td>{$vo.scompany}</td>
+                    <td class="text-right">{$vo.pre_intoforce}</td>
+                    <td class="text-right">{$vo.365days}</td>
+                    <td class="text-right">{$vo.month_now}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域待签订数据<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>区域</th>
+                    <th class="text-right">累计</th>
+                    <th class="text-right">90天内</th>
+                </tr>
+                {volist name="result" id="vo"}
+                <tr>
+                    <td>{$vo.scompany}</td>
+                    <td class="text-right">{$vo.pre_sign}</td>
+                    <td class="text-right">{$vo.90days}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>本财年投标报价数据报表<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>区域</th>
+                    <th class="text-right">项目数</th>
+                    <th class="text-right">报价台量</th>
+                    <th class="text-right">中标台量</th>
+                    <th class="text-right">中标率%</th>
+                </tr>
+                {volist name="result" id="vo"}
+                <tr>
+                    <td>{$vo.scompany}</td>
+                    <td class="text-right">{$vo.quote_num}</td>
+                    <td class="text-right">{$vo.quote_sum}</td>
+                    <td class="text-right">{$vo.bid}</td>
+                    <td class="text-right">{$vo.bid_rate}</td>
+                </tr>
+                    {/volist}
+            </table>
+        </div>
+        {eq name="Think.session.rivals" value="1"}
+        <div class="page-header">
+            <h4>近三个月竞争对手下浮情况<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">厂家</th>
+                    <th class="text-left">报价日期</th>
+                    <th class="text-right">相对下浮%</th>
+                    <th class="text-left">我司型号</th>
+                    <th class="text-left">台量</th>
+                    <th class="text-left">坐标</th>
+                    <th class="text-left">项目名称</th>
+                    <th class="text-left">报价编号</th>
+
+                </tr>
+                {volist name="result22" id="result22"}
+                <tr>
+                    <td class="text-left">{$result22.rivals}</td>
+                    <td class="text-left">{$result22.quote_date}</td>
+                    <td class="text-right">{$result22.relative_float}</td>
+                    <td class="text-left">{$result22.elevator_model}</td>
+                    <td class="text-left">{$result22.quote_num}</td>
+                    <td class="text-left">{$result22.city}</td>
+                    <td class="text-left">{$result22.project_name}</td>
+                    <td class="text-left">{$result22.quote_id}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>营业员画像<small></small></h4>
+        </div>
+        <h5>a.济南大区<small></small></h5>
+        <a class="btn btn-primary" href="{:url('Salesperson/index?id=22112')}" role="button">陈浩</a>
+        <a class="btn btn-primary" href="{:url('Salesperson/index?id=41307')}" role="button">高晓彤</a>
+        <a class="btn btn-primary" href="{:url('Salesperson/index?id=32998')}" role="button">金勇</a>
+        <a class="btn btn-primary" href="{:url('Salesperson/index?id=22110')}" role="button">赵健</a>
+        <a class="btn btn-primary" href="{:url('Salesperson/index?id=32324')}" role="button">刘强</a>
+        <a class="btn btn-primary" href="{:url('Salesperson/index?id=12747')}" role="button">李智勇</a>
+        <a class="btn btn-primary" href="{:url('Salesperson/index?id=39519')}" role="button">刘政</a>
+        <a class="btn btn-primary" href="{:url('Salesperson/index?id=39514')}" role="button">梁闫</a>
+        {else/}
+        {/eq}
+    </div>
+    <!--/营业模块-->
+    <!--完工模块-->
+    <div class="tab-pane " id="install">
+        <div class="page-header">
+            <h4>山东司季度指标及完工数据<small>(完工日期:{$Think.session.complete_date})</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>季度</th>
+                    <th class="text-right">指标</th>
+                    <th class="text-right">完成</th>
+                    <th class="text-right">完成率%</th>
+                </tr>
+                {volist name="result16" id="result16"}
+                <tr>
+                    <td>{$result16.quarter}</td>
+                    <td class="text-right">{$result16.install_index}</td>
+                    <td class="text-right">{$result16.install_complete}</td>
+                    <td class="text-right">{$result16.install_rate}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域完工指标及完成情况<small>(完工日期:{$Think.session.complete_date})</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">指标</th>
+                    <th class="text-right">完工</th>
+                    <th class="text-right">完工率%</th>
+
+                </tr>
+                {volist name="result" id="vo"}
+                {lt name="vo.install_rate" value="$Think.session.install_rate"}
+                <tr class = "warning">
+                    <td class="text-left">{$vo.scompany}</td>
+                    <td class="text-right">{$vo.install_index}</td>
+                    <td class="text-right">{$vo.install_complete}</td>
+                    <td class="text-right">{$vo.install_rate}</td>
+                </tr>
+                {else/}
+                <tr >
+                    <td class="text-left">{$vo.scompany}</td>
+                    <td class="text-right">{$vo.install_index}</td>
+                    <td class="text-right">{$vo.install_complete}</td>
+                    <td class="text-right">{$vo.install_rate}</td>
+                </tr>
+                {/lt}
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>本财年完工梯关闭情况<small>(完工日期:{$Think.session.complete_date})</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">完工</th>
+                    <th class="text-right">关闭</th>
+                    <th class="text-right">关闭率%</th>
+
+                </tr>
+                {volist name="result" id="vo"}
+                <tr>
+                    <td class="text-left">{$vo.scompany}</td>
+                    <td class="text-right">{$vo.install_complete}</td>
+                    <td class="text-right">{$vo.close}</td>
+                    <td class="text-right">{$vo.close_rate}</td>
+                </tr>
+                    {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>本财年在制情况<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">在制</th>
+                    <th class="text-right">180天内</th>
+                    <th class="text-right">1年以上</th>
+                    <th class="text-right">当年进场</th>
+
+                </tr>
+                {volist name="result8" id="result8"}
+                <tr>
+                    <td class="text-left">{$result8.company}</td>
+                    <td class="text-right">{$result8.making}</td>
+                    <td class="text-right">{$result8.making1}</td>
+                    <td class="text-right">{$result8.making2}</td>
+                    <td class="text-right">{$result8.entry}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+    </div>
+    <!--/完工模块-->
+    <!--售后模块-->
+    <div class="tab-pane " id="after">
+        <div class="page-header">
+            <h4>区域在保台量<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">合计</th>
+                    <th class="text-right">三包</th>
+                    <th class="text-right">有偿</th>
+                    <th class="text-right">指标</th>
+                    <th class="text-right">完成率</th>
+
+                </tr>
+                {volist name="result9" id="result9"}
+                <tr>
+                    <td class="text-left">{$result9.company}</td>
+                    <td class="text-right">{$result9.total}</td>
+                    <td class="text-right">{$result9.guarantee}</td>
+                    <td class="text-right">{$result9.paid}</td>
+                    <td class="text-right">{$result9.paid_index}</td>
+                    <td class="text-right">{$result9.paid_per}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域保养销售&入金<small>(K元)</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">销售指标</th>
+                    <th class="text-right">销售实际</th>
+                    <th class="text-right">完成率</th>
+                    <th class="text-right">入金指标</th>
+                    <th class="text-right">入金实际</th>
+                    <th class="text-right">完成率</th>
+                </tr>
+                {volist name="result10" id="result10"}
+                <tr>
+                    <td class="text-left">{$result10.company}</td>
+                    <td class="text-right">{$result10.maintain_sale_index}</td>
+                    <td class="text-right">{$result10.maintain_sale}</td>
+                    <td class="text-right">{$result10.maintain_sale_per}</td>
+                    <td class="text-right">{$result10.maintain_income_index}</td>
+                    <td class="text-right">{$result10.maintain_income}</td>
+                    <td class="text-right">{$result10.maintain_income_per}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域维改销售&入金<small>(K元)</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">销售指标</th>
+                    <th class="text-right">销售实际</th>
+                    <th class="text-right">完成率</th>
+                    <th class="text-right">入金指标</th>
+                    <th class="text-right">入金实际</th>
+                    <th class="text-right">完成率</th>
+
+                </tr>
+                {volist name="result13" id="result13"}
+                <tr>
+                    <td class="text-left">{$result13.company}</td>
+                    <td class="text-right">{$result13.repair_sale_index}</td>
+                    <td class="text-right">{$result13.repair_sale}</td>
+                    <td class="text-right">{$result13.repair_sale_per}</td>
+                    <td class="text-right">{$result13.repair_income_index}</td>
+                    <td class="text-right">{$result13.repair_income}</td>
+                    <td class="text-right">{$result13.repair_income_per}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域保养成本及毛利率<small>(元)</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">在保年平均价格</th>
+                    <th class="text-right">新签年平均价格</th>
+                    <th class="text-right">单梯保养成本</th>
+                    <th class="text-right">毛利率</th>
+
+                </tr>
+                {volist name="result15" id="result15"}
+                <tr>
+                    <td class="text-left">{$result15.company}</td>
+                    <td class="text-right">{$result15.guarantee_ave_year}</td>
+                    <td class="text-right">{$result15.new_ave_year}</td>
+                    <td class="text-right">{$result15.maintain_cost_single}</td>
+                    <td class="text-right">{$result15.gross_profit_margin}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+
+
+    </div>
+    <!--/售后模块-->
+    <!--欠款模块-->
+    <div class="tab-pane " id="arrears">
+        <div class="page-header">
+            <h4>区域欠款合计 <small>(元)</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>区域</th>
+                    <th class="text-right">设备欠款</th>
+                    <th class="text-right">安装欠款</th>
+                    <th class="text-right">合计</th>
+                </tr>
+                {volist name="result6" id="result6"}
+                <tr>
+                    <td>{$result6.company}</td>
+                    <td class="text-right">{$result6.arrears_amount}</td>
+                    <td class="text-right">{$result6.arrears_amount1}</td>
+                    <td class="text-right">{$result6.total}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>区域当年欠款 <small>(元)-->目标值≤9%</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>区域</th>
+                    <th class="text-right">设备欠款</th>
+                    <th class="text-right">安装欠款</th>
+                    <th class="text-right">合计</th>
+                    <th class="text-right">合同金额</th>
+                    <th class="text-right">欠款率</th>
+                </tr>
+                {volist name="result7" id="result7"}
+                <tr>
+                    <td>{$result7.company}</td>
+                    <td class="text-right">{$result7.arrears_amount}</td>
+                    <td class="text-right">{$result7.arrears_amount1}</td>
+                    <td class="text-right">{$result7.total}</td>
+                    <td class="text-right">{$result7.contract_amount}</td>
+                    <td class="text-right">{$result7.rate}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>设备历史欠款与回收 <small>(元)-->目标值≥85%</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">设备欠款</th>
+                    <th class="text-right">回收</th>
+                    <th class="text-right">结余</th>
+                    <th class="text-right">回收率</th>
+
+                </tr>
+                {volist name="result12" id="result12"}
+                <tr>
+                    <td class="text-left">{$result12.company}</td>
+                    <td class="text-right">{$result12.arrears_amount}</td>
+                    <td class="text-right">{$result12.split_amount}</td>
+                    <td class="text-right">{$result12.balance}</td>
+                    <td class="text-right">{$result12.income_per}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>安装历史欠款与回收 <small>(元)-->目标值≥85%</small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">安装欠款</th>
+                    <th class="text-right">回收</th>
+                    <th class="text-right">结余</th>
+                    <th class="text-right">回收率</th>
+                </tr>
+                {volist name="result11" id="result11"}
+                <tr>
+                    <td class="text-left">{$result11.company}</td>
+                    <td class="text-right">{$result11.arrears_amount}</td>
+                    <td class="text-right">{$result11.split_amount}</td>
+                    <td class="text-right">{$result11.balance}</td>
+                    <td class="text-right">{$result11.income_per}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>欠款原因 <small> </small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">区域</th>
+                    <th class="text-right">不可收</th>
+                    <th class="text-right">性能不良待处理</th>
+                    <th class="text-right">提交诉讼</th>
+                    <th class="text-right">按合同支付条件未到期</th>
+                    <th class="text-right">正在走付款流程</th>
+                    <th class="text-right">合计</th>
+                </tr>
+                {volist name="result14" id="result14"}
+                <tr>
+                    <td class="text-left">{$result14.company}</td>
+                    <td class="text-right">{$result14.notcollect}</td>
+                    <td class="text-right">{$result14.pending}</td>
+                    <td class="text-right">{$result14.sublawsuit}</td>
+                    <td class="text-right">{$result14.notexpired}</td>
+                    <td class="text-right">{$result14.inprocess}</td>
+                    <td class="text-right">{$result14.total}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+    </div>
+    <!--/欠款模块-->
+    <!--事业部模块-->
+    <div class="tab-pane " id="litigation">
+        <div class="page-header">
+            <h4>事业部总体得分排名<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>排名</th>
+                    <th class="text-left">事业部</th>
+                    <th class="text-left">区域</th>
+                    <th class="text-right">总得分</th>
+                    <th class="text-right">生效</th>
+                    <th class="text-right">完工</th>
+                    <th class="text-right">当年欠款</th>
+                    <th class="text-right">历史欠款</th>
+
+                </tr>
+                {volist name="result17" id="result17"}
+                <tr>
+                    <td>{$result17.rank}</td>
+                    <td class="text-left">{$result17.bu_sname}</td>
+                    <td class="text-left">{$result17.company}</td>
+                    <td class="text-right">{$result17.score}</td>
+                    <td class="text-right">{$result17.intoforce}</td>
+                    <td class="text-right">{$result17.complete}</td>
+                    <td class="text-right">{$result17.thisyear}</td>
+                    <td class="text-right">{$result17.history}</td>
+
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>事业部生效得分排名<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th>排名</th>
+                    <th class="text-left">事业部</th>
+                    <th class="text-left">区域</th>
+                    <th class="text-right">得分</th>
+                    <th class="text-right">指标</th>
+                    <th class="text-right">生效</th>
+                    <th class="text-right">完成率</th>
+
+                </tr>
+                {volist name="result18" id="result18"}
+                <tr>
+                    <td>{$result18.rank}</td>
+                    <td class="text-left">{$result18.bu_sname}</td>
+                    <td class="text-left">{$result18.company}</td>
+                    <td class="text-right">{$result18.score}</td>
+                    <td class="text-right">{$result18.year_index}</td>
+                    <td class="text-right">{$result18.year_complete}</td>
+                    <td class="text-right">{$result18.rate}</td>
+
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>事业部完工得分排名<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">排名</th>
+                    <th class="text-left">事业部</th>
+                    <th class="text-left">区域</th>
+                    <th class="text-right">得分</th>
+                    <th class="text-right">指标</th>
+                    <th class="text-right">完工</th>
+                    <th class="text-right">完成率</th>
+
+                </tr>
+                {volist name="result19" id="result19"}
+                <tr>
+                    <td class="text-left">{$result19.rank}</td>
+                    <td class="text-left">{$result19.bu_sname}</td>
+                    <td class="text-left">{$result19.company}</td>
+                    <td class="text-right">{$result19.score}</td>
+                    <td class="text-right">{$result19.year_index}</td>
+                    <td class="text-right">{$result19.year_complete}</td>
+                    <td class="text-right">{$result19.rate}</td>
+
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>事业部当年欠款得分排名<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">排名</th>
+                    <th class="text-left">事业部</th>
+                    <th class="text-left">区域</th>
+                    <th class="text-right">得分</th>
+                    <th class="text-right">合同额</th>
+                    <th class="text-right">欠款</th>
+                    <th class="text-right">欠款率</th>
+
+                </tr>
+                {volist name="result20" id="result20"}
+                <tr>
+                    <td class="text-left">{$result20.rank}</td>
+                    <td class="text-left">{$result20.bu_sname}</td>
+                    <td class="text-left">{$result20.company}</td>
+                    <td class="text-right">{$result20.score}</td>
+                    <td class="text-right">{$result20.contract_amount}</td>
+                    <td class="text-right">{$result20.this_arrears}</td>
+                    <td class="text-right">{$result20.rate}</td>
+
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        <div class="page-header">
+            <h4>事业部历史欠款得分排名<small></small></h4>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="danger">
+                    <th class="text-left">排名</th>
+                    <th class="text-left">事业部</th>
+                    <th class="text-left">区域</th>
+                    <th class="text-right">得分</th>
+                    <th class="text-right">欠款</th>
+                    <th class="text-right">回收</th>
+                    <th class="text-right">回收率</th>
+
+                </tr>
+                {volist name="result21" id="result21"}
+                <tr>
+                    <td class="text-left">{$result21.rank}</td>
+                    <td class="text-left">{$result21.bu_sname}</td>
+                    <td class="text-left">{$result21.company}</td>
+                    <td class="text-right">{$result21.score}</td>
+                    <td class="text-right">{$result21.arrears}</td>
+                    <td class="text-right">{$result21.recovery}</td>
+                    <td class="text-right">{$result21.rate}</td>
+
+                </tr>
+                {/volist}
+            </table>
+        </div>
+
+
+    </div>
+    <!--/事业部模块-->
+</div>

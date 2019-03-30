@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('update')}" method="post">
+            <label>合同号:</label><br>
+            <input type="hidden" name="id" value="{$Litigation->getData('id')}" />
+            <input type="text" name="contract_id"  value="{$Litigation->getData('contract_id')}" /><br>
+            <label>分公司:</label><br>
+            <input type="text" name="company" value="{$Litigation->getData('company')}" /><br>
+            <label>买方单位:</label><br>
+            <input type="text" name="buyer" value="{$Litigation->getData('buyer')}" /><br>
+            <label>发函日期:</label><br>
+            <input type="date" name="letter_date" value="{$Litigation->getData('letter_date')}" /><br>
+            <label>买卖合同起诉金额:</label><br>
+            <input type="text" name="eq_litigation" value="{$Litigation->getData('eq_litigation')}" /><br>
+            <label>安装合同起诉金额:</label><br>
+            <input type="text" name="in_litigation" value="{$Litigation->getData('in_litigation')}" /><br>
+            <label>维保合同起诉金额:</label><br>
+            <input type="text" name="ma_litigation" value="{$Litigation->getData('ma_litigation')}" /><br>
+            <label>投标保证金:</label><br>
+            <input type="text" name="bid_bond" value="{$Litigation->getData('bid_bond')}" /><br>
+            <label>类型:</label><br>
+            <select name="type" value="{$Litigation->getData('type')}">
+                <option>{$Litigation->getData('type')}</option>
+                <option>诉讼</option>
+                <option>律师函</option>
+            </select><br>
+            <label>是否结案:</label><br>
+            <select name="if_close" value="{$Litigation->getData('if_close')}">
+                <option>{$Litigation->getData('if_close')}</option>
+                <option>否</option>
+                <option>是</option>
+            </select><br>
+            <label>进展情况:</label><br>
+            <textarea rows="5" cols="50" type="text" name="progress" class="textarea">{$Litigation->getData('progress')}</textarea><br>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

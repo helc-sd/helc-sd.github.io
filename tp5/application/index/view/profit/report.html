@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盈利分享</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#">事业部报表</a></li>
+                <li class="active">盈利分享</li>
+            </ol>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>事业部名称</th>
+                    <th class="text-right">平均设备签约价</th>
+                    <th class="text-right">区域平均设备签约价</th>
+                    <th class="text-right">合同签订安装价</th>
+                    <th class="text-right">标准安装价</th>
+                    <th class="text-right">安装支出</th>
+                    <th class="text-right">不良费用</th>
+                    <th class="text-right">盈利分享奖金</th>
+                    <th class="text-right">安装收款比例</th>
+                    <th>达标</th>
+                    <th class="text-right">财年</th>
+                </tr>
+                {volist name="profits" id="_Profit" key="key"}
+                <tr>
+                    <td>{$key}</td>
+                    <td>{$_Profit->getData('bu_name')}</td>
+                    <td class="text-right">{$_Profit->getData('bu_eq_average'|round=2)}</td>
+                    <td class="text-right">{$_Profit->getData('co_eq_average'|round=2)}</td>
+                    <td class="text-right">{$_Profit->getData('bu_in_price'|round=2)}</td>
+                    <td class="text-right">{$_Profit->getData('spl_in_price'|round=2)}</td>
+                    <td class="text-right">{$_Profit->getData('install_pay'|round=2)}</td>
+                    <td class="text-right">{$_Profit->getData('bad_cost'|round=2)}</td>
+                    <td class="text-right">{$_Profit->getData('profit_bonus'|round=2)}</td>
+                    <td class="text-right">{$_Profit->getData('recovery_per')}</td>
+                    <td class="text-right">{$_Profit->getData('if_reach')}</td>
+                    <td class="text-right">{$_Profit->getData('financial_year')}</td>
+
+                </tr>
+                {/volist}
+            </table>
+            {$profits->render()}
+        </div>
+    </div>
+</div>
+</body>
+</html>

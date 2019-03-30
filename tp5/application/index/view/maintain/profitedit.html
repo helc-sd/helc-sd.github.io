@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('profitupdate')}" method="post">
+            <label>分公司:</label><br>
+            <input type="hidden" name="id" value="{$Maintain->getData('id')}" />
+            <input type="text" name="company" value="{$Maintain->getData('company')}" /><br>
+            <label>在保年平均价格:</label><br>
+            <input type="text" name="guarantee_ave_year" value="{$Maintain->getData('guarantee_ave_year')}" /><br>
+            <label>新签年平均价格:</label><br>
+            <input type="text" name="new_ave_year" value="{$Maintain->getData('new_ave_year')}" /><br>
+            <label>单梯保养成本:</label><br>
+            <input type="text" name="maintain_cost_single" value="{$Maintain->getData('maintain_cost_single')}" /><br>
+            <label>毛利率:</label><br>
+            <input type="text" name="gross_profit_margin" value="{$Maintain->getData('gross_profit_margin')}" /><br>
+            <button type="submit">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

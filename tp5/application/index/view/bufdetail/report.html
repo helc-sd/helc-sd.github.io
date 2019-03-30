@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事业部入金按月汇总</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <ol class="breadcrumb">
+            <li><a href="#">事业部报表</a></li>
+            <li class="active">事业部入金按月汇总</li>
+        </ol>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped table-condensed">
+                <tr class="info">
+                    <th>序号</th>
+                    <th>事业部</th>
+                    <th class="text-right">季度薪酬池</th>
+                    <th class="text-right">季度费用池</th>
+                    <th class="text-right">财年薪酬池</th>
+                    <th class="text-right">财年费用池</th>
+                    <th class="text-right">财年</th>
+                    <th class="text-right">时间</th>
+                    <th class="text-right">说明</th>
+                </tr>
+                {volist name="bufdetails" id="_Bufdetails" key="key"}
+                <tr>
+                    <td>{$_Bufdetails->getData('id')}</td>
+                    <td>{$_Bufdetails->getData('bu_name')}</td>
+                    <td class="text-right">{$_Bufdetails->getData('quarter_pay')|round=2}</td>
+                    <td class="text-right">{$_Bufdetails->getData('quarter_cost')}</td>
+                    <td class="text-right">{$_Bufdetails->getData('year_pay')|round=2}</td>
+                    <td class="text-right">{$_Bufdetails->getData('year_cost')}</td>
+                    <td class="text-right">{$_Bufdetails->getData('year')}</td>
+                    <td class="text-right">{$_Bufdetails->getData('create_time')}</td>
+                    <td class="text-right">{$_Bufdetails->getData('remarks')}</td>
+                </tr>
+                {/volist}
+            </table>
+        </div>
+        {$bufdetails->render()}
+    </div>
+</div>
+</body>
+</html>

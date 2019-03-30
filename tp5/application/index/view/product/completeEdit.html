@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form action="{:url('completeUpdate')}" method="post">
+            <label>生产工号:</label><br>
+            <input type="hidden" name="id"  value="{$Product->getData('id')}" />
+            <input type="text" name="product_id" disabled="disabled" value="{$Product->getData('product_id')}" /><br>
+            <label>合同号:</label><br>
+            <input type="text" name="contract_id" disabled="disabled" value="{$Product->getData('contract_id')}" /><br>
+            <label>项目经理:</label><br>
+            <input type="text" name="supervisor"  value="{$Product->getData('supervisor')}" /><br>
+            <label>发货日期:</label><br>
+            <input type="date" name="delivery_date"  value="{$Product->getData('delivery_date')}" /><br>
+            <label>进场日期:</label><br>
+            <input type="date" name="entry_date"  value="{$Product->getData('entry_date')}" /><br>
+            <label>完工日期:</label><br>
+            <input type="date" name="complete_date"  value="{$Product->getData('complete_date')}" /><br>
+            <label>PDA录入是否及时:</label><br>
+            <select name="pda_intime" value="{$Product->getData('pda_intime')}">
+                <option>{$Product->getData('pda_intime')}</option>
+                <option>是</option>
+                <option>否</option>
+            </select><br>
+            <label>实际安装支出:</label><br>
+            <input type="number" name="installation_expenditure"  value="{$Product->getData('installation_expenditure')}" onblur="checkNum()" /><br>
+            <label>关闭日期:</label><br>
+            <input type="date" name="close_date" disabled="disabled" value="{$Product->getData('close_date')}" /><br>
+            <hr />
+            <button type="submit" class="btn btn-warning">保存</button>
+        </form>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    function clearNoNum(event,obj){
+        //响应鼠标事件，允许左右方向键移动
+        event = window.event||event;
+        if(event.keyCode == 37 | event.keyCode == 39){
+            return;
+        }
+        //先把非数字的都替换掉，除了数字和.
+        obj.value = obj.value.replace(/[^\d.]/g,"");
+        //必须保证第一个为数字而不是.
+        obj.value = obj.value.replace(/^\./g,"");
+        //保证只有出现一个.而没有多个.
+        obj.value = obj.value.replace(/\.{2,}/g,".");
+        //保证.只出现一次，而不能出现两次以上
+        obj.value = obj.value.replace(".","$#$").replace(/\./g,"").replace("$#$",".");
+        var t = obj.value.charAt(0);
+        //如果第一位是负号，则允许添加
+        if (t == '-') {
+            obj.value = '-' + obj.value;
+        }
+    }
+    function checkNum(obj){
+        //为了去除最后一个.
+        obj.value = obj.value.replace(/\.$/g,"");
+    }
+</script>
+</html>

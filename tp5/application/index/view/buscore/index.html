@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事业部成员列表</title>
+</head>
+<body>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li><a href="#">事业部报表</a></li>
+                <li class="active">事业部总体得分情况</li>
+            </ol>
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered table-striped table-condensed">
+                    <tr class="info">
+                        <th>序号</th>
+                        <th>事业部名称</th>
+                        <th>分公司</th>
+                        <th class="text-right">生效</th>
+                        <th class="text-right">完工</th>
+                        <th class="text-right">当年欠款</th>
+                        <th class="text-right">历史欠款</th>
+                        <th class="text-right">总得分</th>
+                    </tr>
+                    {volist name="buscores" id="_Buscore" key="key"}
+                    <tr>
+                        <td>{$key}</td>
+                        <td>{$_Buscore->getData('bu_name')}</td>
+                        <td>{$_Buscore->getData('company')}</td>
+                        <td class="text-right">{$_Buscore->getData('intoforce')|round=2}</td>
+                        <td class="text-right">{$_Buscore->getData('complete')|round=2}</td>
+                        <td class="text-right">{$_Buscore->getData('thisyear')|round=2}</td>
+                        <td class="text-right">{$_Buscore->getData('history')|round=2}</td>
+
+                        <td class="text-right">{$_Buscore->getData('score')}</td>
+                    </tr>
+                    {/volist}
+                </table>
+            </div>
+            {$buscores->render()}
+        </div>
+    </div>
+</body>
+</html>
